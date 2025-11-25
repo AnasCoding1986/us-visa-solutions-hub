@@ -3,6 +3,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Card } from "@/components/ui/card";
 import { Globe, Users, Award, Clock } from "lucide-react";
+import profileImg from "/public/profile.png";
 
 const About = () => {
   const values = [
@@ -59,13 +60,12 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-card bg-gradient-to-br from-accent/20 to-gold/20 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-5xl font-bold text-primary">MQZ</span>
-                    </div>
-                    <p className="text-muted-foreground">Professional Photo</p>
-                  </div>
+                <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-card">
+                  <img
+                    src={profileImg}
+                    alt="M Q Zaman - Immigration Consultant"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </motion.div>
 
