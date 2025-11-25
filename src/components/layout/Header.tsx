@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, X, FileCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import logoImg from "/public/logo.png";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,7 +22,7 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <img src="/logo.png" alt="US Visa Solutions Logo" className="h-10 w-10 object-contain" />
+            <img src={logoImg} alt="US Visa Solutions Logo" className="h-10 w-10 object-contain" />
             <div className="flex flex-col leading-tight">
               <span className="font-semibold text-foreground">US Visa Solutions</span>
               <span className="text-xs text-muted-foreground">M Q Zaman</span>

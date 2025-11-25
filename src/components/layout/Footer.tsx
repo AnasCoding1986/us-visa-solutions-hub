@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin, Phone } from "lucide-react";
+import logoImg from "/public/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -24,7 +25,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src="/logo.png" alt="US Visa Solutions Logo" className="h-10 w-10 object-contain" />
+              <img src={logoImg} alt="US Visa Solutions Logo" className="h-10 w-10 object-contain" />
               <div className="flex flex-col leading-tight">
                 <span className="font-semibold">US Visa Solutions</span>
                 <span className="text-xs opacity-80">M Q Zaman</span>
@@ -89,9 +90,7 @@ const Footer = () => {
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 flex-shrink-0" />
                 <a
-                  href="https://wa.me/14049888587"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="tel:+14049888587"
                   className="hover:opacity-100 transition-smooth"
                 >
                   +1 (404) 988-8587
