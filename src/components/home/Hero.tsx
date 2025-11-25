@@ -2,13 +2,14 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import profileImg from "/public/profile.png";
 
 const Hero = () => {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-hero opacity-95" />
-      
+
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
@@ -27,14 +28,14 @@ const Hero = () => {
             <div className="inline-block px-4 py-2 bg-accent/20 rounded-full backdrop-blur-sm">
               <span className="text-sm font-medium">Trusted U.S. Visa & Immigration Support</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               Professional Support for Your{" "}
               <span className="text-accent">Immigration Journey</span>
             </h1>
-            
+
             <p className="text-lg md:text-xl opacity-90 max-w-2xl">
-              Fast, Reliable, Trusted assistance for Visit Visas, USCIS & NVC Case Handling. 
+              Fast, Reliable, Trusted assistance for Visit Visas, USCIS & NVC Case Handling.
               Expert guidance every step of the way.
             </p>
 
@@ -49,7 +50,7 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-              
+
               <Button
                 asChild
                 size="lg"
@@ -57,7 +58,7 @@ const Hero = () => {
                 className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20"
               >
                 <a
-                  href="https://wa.me/YOUR_PHONE_NUMBER"
+                  href="https://wa.me/14049888587"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -92,16 +93,13 @@ const Hero = () => {
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-hover aspect-[4/5]">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/20 to-gold/20 backdrop-blur-sm flex items-center justify-center">
-                <div className="text-center text-primary-foreground p-8">
-                  <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-primary-foreground/20 flex items-center justify-center">
-                    <span className="text-5xl font-bold">MQZ</span>
-                  </div>
-                  <p className="text-sm opacity-80">Professional Photo Placeholder</p>
-                </div>
-              </div>
+              <img
+                src={profileImg}
+                alt="M Q Zaman - Immigration Consultant"
+                className="w-full h-full object-cover"
+              />
             </div>
-            
+
             {/* Floating credential card */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
