@@ -58,7 +58,7 @@ const Hero = () => {
                 className="bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20"
               >
                 <a
-                  href="https://wa.me/14049888587"
+                  href="https://wa.me/14049888587?text=Hi,%20I%20would%20like%20to%20inquire%20about%20US%20visa%20services"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
