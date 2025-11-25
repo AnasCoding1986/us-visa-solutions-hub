@@ -1,5 +1,6 @@
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -21,27 +22,44 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const form = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    if (!form.current) return;
 
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    try {
+      await emailjs.sendForm(
+        "service_77s5e1n",
+        "template_2q1n3vv",
+        form.current,
+        "7W8Mw_zWAx4B9GwBq"
+      );
 
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
+      setIsSubmitting(false);
+      setIsSuccess(true);
 
-    // Reset form after success animation
-    setTimeout(() => {
-      setIsSuccess(false);
-      (e.target as HTMLFormElement).reset();
-    }, 3000);
+      toast({
+        title: "Message Sent!",
+        description: "We'll get back to you within 24 hours.",
+      });
+
+      // Reset form after success animation
+      setTimeout(() => {
+        setIsSuccess(false);
+        form.current?.reset();
+      }, 3000);
+    } catch (error) {
+      console.error("FAILED...", error);
+      setIsSubmitting(false);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -94,7 +112,7 @@ const Contact = () => {
                   ) : (
                     <>
                       <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-                      <form onSubmit={handleSubmit} className="space-y-6">
+                      <form ref={form} onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid md:grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label htmlFor="firstName">First Name</Label>
@@ -213,10 +231,22 @@ const Contact = () => {
                         </div>
                         <div>
                           <h3 className="font-semibold mb-1">Office Location</h3>
-                          <p className="text-muted-foreground">
+                          <p className="text-muted-foreground mb-4">
                             763 Omaha Dr<br />
                             Norcross, GA 30093
                           </p>
+                          <div className="w-full h-48 bg-muted rounded-md overflow-hidden">
+                            <iframe
+                              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.678767890123!2d-84.1870123!3d33.9245123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f5a60a12345678%3A0x1234567890abcdef!2s763%20Omaha%20Dr%2C%20Norcross%2C%20GA%2030093!5e0!3m2!1sen!2sus!4v1625000000000!5m2!1sen!2sus"
+                              width="100%"
+                              height="100%"
+                              style={{ border: 0 }}
+                              allowFullScreen
+                              loading="lazy"
+                              referrerPolicy="no-referrer-when-downgrade"
+                              title="Office Location"
+                            ></iframe>
+                          </div>
                         </div>
                       </div>
                     </Card>
@@ -229,12 +259,12 @@ const Contact = () => {
                         <div>
                           <h3 className="font-semibold mb-1">WhatsApp</h3>
                           <a
-                            href="https://wa.me/YOUR_PHONE_NUMBER"
+                            href="https://wa.me/14049888587"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-muted-foreground hover:text-accent transition-smooth"
                           >
-                            Message us on WhatsApp
+                            +1 (404) 988-8587
                           </a>
                         </div>
                       </div>
@@ -271,7 +301,7 @@ const Contact = () => {
                     className="w-full bg-primary-foreground/10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/20"
                   >
                     <a
-                      href="https://wa.me/YOUR_PHONE_NUMBER"
+                      href="https://wa.me/14049888587"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

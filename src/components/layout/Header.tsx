@@ -21,9 +21,7 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg gradient-hero transition-smooth group-hover:shadow-hover">
-              <span className="text-xl font-bold text-primary-foreground">Z</span>
-            </div>
+            <img src="/logo.png" alt="US Visa Solutions Logo" className="h-10 w-10 object-contain" />
             <div className="flex flex-col leading-tight">
               <span className="font-semibold text-foreground">US Visa Solutions</span>
               <span className="text-xs text-muted-foreground">M Q Zaman</span>

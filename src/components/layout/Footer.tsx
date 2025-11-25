@@ -24,9 +24,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent">
-                <span className="text-xl font-bold text-accent-foreground">Z</span>
-              </div>
+              <img src="/logo.png" alt="US Visa Solutions Logo" className="h-10 w-10 object-contain" />
               <div className="flex flex-col leading-tight">
                 <span className="font-semibold">US Visa Solutions</span>
                 <span className="text-xs opacity-80">M Q Zaman</span>
@@ -86,6 +84,17 @@ const Footer = () => {
                   className="hover:opacity-100 transition-smooth"
                 >
                   mqzaman763@gmail.com
+                </a>
+              </li>
+              <li className="flex items-center space-x-2">
+                <Phone className="h-4 w-4 flex-shrink-0" />
+                <a
+                  href="https://wa.me/14049888587"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-100 transition-smooth"
+                >
+                  +1 (404) 988-8587
                 </a>
               </li>
             </ul>
