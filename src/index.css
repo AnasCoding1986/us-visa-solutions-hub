@@ -47,6 +47,12 @@ All colors MUST be HSL.
     --shadow-card: 0 4px 20px -2px hsl(210 60% 18% / 0.08);
     --shadow-hover: 0 8px 30px -4px hsl(180 45% 58% / 0.2);
     
+    --transition-fast: 150ms;
+    --transition-base: 200ms;
+    --transition-slow: 300ms;
+    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-hover: ease-out;
+
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -117,5 +123,66 @@ All colors MUST be HSL.
   
   .transition-smooth {
     transition: var(--transition-smooth);
+  }
+  
+  .card-hover {
+    transition: transform var(--transition-base) var(--ease-smooth),
+                box-shadow var(--transition-base) var(--ease-smooth),
+                border-color var(--transition-base) var(--ease-smooth);
+    border: 1px solid transparent;
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: hsl(var(--accent) / 0.5);
+  }
+
+  @keyframes subtle-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .animate-subtle-pulse {
+    animation: subtle-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes faq-slide-down {
+    from { height: 0; opacity: 0; }
+    to { height: var(--radix-accordion-content-height); opacity: 1; }
+  }
+
+  @keyframes faq-slide-up {
+    from { height: var(--radix-accordion-content-height); opacity: 1; }
+    to { height: 0; opacity: 0; }
+  }
+
+  .animate-faq-down {
+    animation: faq-slide-down 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-faq-up {
+    animation: faq-slide-up 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .nav-link-underline {
+    position: relative;
+  }
+
+  .nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: hsl(var(--accent));
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--transition-base) var(--ease-smooth);
+  }
+
+  .nav-link-underline:hover::after {
+    transform: scaleX(1);
   }
 }

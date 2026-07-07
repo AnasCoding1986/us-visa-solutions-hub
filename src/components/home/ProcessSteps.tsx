@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { FileSearch, FileEdit, Send } from "lucide-react";
 
@@ -24,6 +24,30 @@ const steps = [
 ];
 
 const ProcessSteps = () => {
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
+      },
+    },
+  };
+
   return (
     <section className="py-24 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,56 +56,74 @@ const ProcessSteps = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">How We Work</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-foreground">How We Work</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-sans">
             A simple, transparent 3-step process to handle your immigration needs
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto"
+        >
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-              >
-                <Card className="relative h-full p-8 text-center hover:shadow-hover transition-smooth group">
-                  {/* Step number */}
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2">
-                    <div className="w-12 h-12 rounded-full gradient-hero flex items-center justify-center text-primary-foreground font-bold text-lg shadow-card">
+              <motion.div key={index} variants={itemVariants} className="relative">
+                <Card className="relative h-full p-8 pt-12 text-center card-hover group flex flex-col justify-between bg-card">
+                  {/* Step number badge */}
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-12 h-12 rounded-full gradient-hero flex items-center justify-center text-primary-foreground font-sans font-bold text-lg shadow-card">
                       {step.number}
                     </div>
                   </div>
 
-                  <div className="pt-8">
-                    <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-smooth">
-                      <Icon className="h-8 w-8 text-accent" />
+                  <div className="flex flex-col h-full items-center justify-center">
+                    {/* Icon container */}
+                    <div className="w-16 h-16 rounded-full bg-accent/10 text-accent flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                      <Icon className="h-8 w-8 transition-colors duration-300" />
                     </div>
 
-                    <h3 className="text-2xl font-semibold mb-4 group-hover:text-accent transition-smooth">
+                    <h3 className="text-2xl font-serif font-semibold mb-4 group-hover:text-accent transition-colors duration-200">
                       {step.title}
                     </h3>
 
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed font-sans">
                       {step.description}
                     </p>
                   </div>
 
-                  {/* Connector line for desktop */}
+                  {/* SVG Animated Connector line for desktop */}
                   {index < steps.length - 1 && (
-                    <div className="hidden md:block absolute top-1/3 -right-4 w-8 h-0.5 bg-border" />
+                    <div className="hidden md:block absolute top-[40%] -right-[20px] w-[32px] h-4 z-20 overflow-visible pointer-events-none">
+                      <svg className="w-full h-full" viewBox="0 0 32 4" fill="none">
+                        <motion.path
+                          d="M 0 2 L 32 2"
+                          stroke="hsl(var(--accent))"
+                          strokeWidth="2"
+                          strokeDasharray="32"
+                          initial={{ strokeDashoffset: shouldReduceMotion ? 0 : 32 }}
+                          whileInView={{ strokeDashoffset: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            duration: 0.8,
+                            delay: shouldReduceMotion ? 0 : (index * 0.15) + 0.35,
+                            ease: "easeInOut",
+                          }}
+                        />
+                      </svg>
+                    </div>
                   )}
                 </Card>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

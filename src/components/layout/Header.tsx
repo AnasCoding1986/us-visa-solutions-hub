@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, FileCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,19 @@ import logoImg from "/public/logo.png";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -17,7 +30,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
+    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? "bg-background/85 backdrop-blur-md shadow-sm border-b border-border/60" : "bg-background border-b border-transparent"}`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
@@ -35,7 +48,7 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-smooth"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 nav-link-underline"
               >
                 {item.name}
               </Link>

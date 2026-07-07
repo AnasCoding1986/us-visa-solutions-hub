@@ -3,7 +3,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Card } from "@/components/ui/card";
 import { Globe, Users, Award, Clock } from "lucide-react";
-import profileImg from "/public/profile.png";
+import profileImg from "/public/profile.jpg";
 
 const About = () => {
   const values = [
