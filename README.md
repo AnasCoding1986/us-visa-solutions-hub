@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
+# US Visa Solutions Hub
 
-## Project info
+A modern, highly performant React & TypeScript web application representing the U.S. Visa & Immigration Support services of **M Q Zaman** based in Norcross, Georgia.
 
-**URL**: https://lovable.dev/projects/05d91d1e-5ad8-4010-8079-ecd928feac0d
+---
 
-## How can I edit this code?
+## 🌟 Project Overview
 
-There are several ways of editing your application.
+This website serves as a professional portal for immigration consulting services, including Visit Visas, USCIS Forms handling, NVC cases, and related documents such as passport services and notary public certifications.
 
-**Use Lovable**
+It is designed with rich aesthetics, responsive layouts, hardware-accelerated animations, and highly optimized assets to deliver a premium user experience.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/05d91d1e-5ad8-4010-8079-ecd928feac0d) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Key Features & Upgrades
 
-**Use your preferred IDE**
+### 1. Visual & Motion Polish (Redesign Updates)
+- **Staggered Animations**: Smooth staggered page-load animations for all hero typography and CTAs using Framer Motion (respecting `prefers-reduced-motion` settings).
+- **Dynamic SVGs**: "How We Work" process sections feature animated SVG line connectors that draw themselves dynamically from left to right as they enter the viewport.
+- **Accordion Enhancements**: FAQs feature rotating chevrons, smooth height-and-opacity transitions, and sliding left accent bars when questions are hovered or opened.
+- **Underline Slide-in Navigation**: Navbar links feature sleek, centered hover underlines powered by `scaleX()` CSS transitions.
+- **Scroll Reactive Header**: The navigation header dynamically blurs and adds a shadow when scrolled past `50px`, keeping text legible over background elements.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 2. Media Optimization
+- **Corporate Headshot**: Recreated, color-graded, and cropped the professional profile image to fit the layout perfectly.
+- **Size Reduction**: Compressed the profile image down to **51.1 KB** (from the original `681 KB` PNG) to maximize load speeds and mobile performance.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 3. Smart Multi-Platform Deployment
+- **Dynamic Routing**: Configured the Router base path dynamically using `import.meta.env.BASE_URL` to support seamless deployments on both **GitHub Pages** (served at `/us-visa-solutions-hub/`) and **Vercel** (served at root `/`).
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🛠️ Technology Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- **Framework**: React 18 & Vite
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS & CSS Custom Properties
+- **Motion**: Framer Motion
+- **Icons**: Lucide React
+- **UI Components**: shadcn/ui (Radix Primitives)
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 💻 Local Development
 
-**Edit a file directly in GitHub**
+Follow these steps to run the project locally on your machine:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/AnasCoding1986/us-visa-solutions-hub.git
+   cd us-visa-solutions-hub
+   ```
 
-**Use GitHub Codespaces**
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+3. **Start the local dev server**:
+   ```bash
+   npm run dev
+   ```
+   *The project will be live at: [http://localhost:8080/us-visa-solutions-hub/](http://localhost:8080/us-visa-solutions-hub/)*
 
-## What technologies are used for this project?
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📦 Deployment
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/05d91d1e-5ad8-4010-8079-ecd928feac0d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **Vercel**: Automatically builds and deploys on every push to the `main` branch. Live URL: [https://us-visa-solutions-hub.vercel.app/](https://us-visa-solutions-hub.vercel.app/)
+- **GitHub Pages**: Deployable using `npm run deploy` to publish static output folder `dist` onto the `gh-pages` branch.
