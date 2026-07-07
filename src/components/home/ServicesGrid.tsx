@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, Variants } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -57,16 +57,12 @@ const services = [
   },
 ];
 
-const colorMap = {
-  accent: "bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white",
-  secondary: "bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-white",
-  gold: "bg-gold/10 text-gold group-hover:bg-gold group-hover:text-white",
-};
+
 
 const ServicesGrid = () => {
   const shouldReduceMotion = useReducedMotion();
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -76,7 +72,7 @@ const ServicesGrid = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 20 },
     visible: {
       opacity: 1,
@@ -113,12 +109,11 @@ const ServicesGrid = () => {
         >
           {services.map((service, index) => {
             const Icon = service.icon;
-            const colorClass = colorMap[service.color as keyof typeof colorMap] || colorMap.accent;
             return (
               <motion.div key={index} variants={itemVariants}>
                 <Card className="h-full p-6 card-hover group flex flex-col justify-between">
                   <div className="flex flex-col h-full">
-                    <div className={`w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 ${colorClass}`}>
+                    <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 bg-accent/10 text-accent group-hover:bg-accent group-hover:text-white">
                       <Icon className="h-7 w-7 transition-colors duration-300" />
                     </div>
                     
